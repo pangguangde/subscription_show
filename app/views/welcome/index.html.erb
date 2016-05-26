@@ -1,0 +1,70 @@
+<h1 style="color: white" ; align="center">Welcome!</h1>
+<body style="background: #8c8c8c">
+<!--<p style="color: white">Find me in app/views/welcome/index.html.erb</p>-->
+<div>
+  <div>
+    <% per = 43 %>
+    <div style="width: <%= 100 - per %>%; height: 100%; float: left;font-size: 100px;font-family: 'Aspergit-Light'">
+      <b style="font-size: 100px;color: rgb(255,255,255);"><%= "#{@weather_now[:tmp]}℃" %></b>
+      <b style="font-size: 40px;color: rgb(255,255,255);"><%= "#{@weather_now[:cond][:txt]}" %></b>
+      <!--
+    <% p "#{@weather_now[:tmp]}℃" %>-->
+    </div>
+    <div id="clock2" style="font-size: 50px; font-family: 'xx'; color: rgb(0, 0, 0); width: <%= per %>%; float: right; text-align: left">
+      <span id="ch1" style="opacity: 0.101252;"></span>
+      <span id="ch2" style="opacity: 0.101252;"></span>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <% op = 1 %>
+      <% @weather_hourly.each do |wh| %>
+          <li style="list-style-type:none;">
+            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wh[:date][11, 12]} ->" %></b>
+            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wh[:tmp]}℃ #{wh[:pop]}%" %></b>
+            <% op -= 0.12 %>
+          </li>
+      <% end %>
+    </div>
+    <div style="width: 100%; height: 100px"></div>
+    <% op = 1 %>
+    <div>
+      <% @weather_daily.each do |wd| %>
+          <li style="list-style-type:none;">
+
+            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wd[:date]}\t[#{wd[:tmp][:min]}℃~#{wd[:tmp][:max]}℃]\t[#{wd[:cond][:txt_d]}->#{wd[:cond][:txt_n]}\t(#{wd[:pop]}%)]" %></b>
+          </li>
+          <% op -= 0.14 %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div style="width: 100%; height: 800px"></div>
+
+</body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+
+            $("#clock2").MyDigitClock({
+                fontSize: 100,
+                fontFamily: "Aspergit-Light",
+                fontColor: "#fff",
+//                fontWeight:"bold",
+                bAmPm: true,
+                bShowHeartBeat: true
+            });
+        });
+    });
+</script>
+
+<script language="JavaScript">
+    function myrefresh()
+    {
+        window.location.reload();
+    }
+    setTimeout('myrefresh()',6000000); //指定1秒刷新一次
+</script>
