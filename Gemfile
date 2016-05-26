@@ -33,7 +33,9 @@ gem 'pry-rails', :group => :development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
 group :development, :test do
   # gem 'pry-rails'
   gem 'meta_request'

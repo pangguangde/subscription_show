@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  order: MyString
+  history: MyString
+  owner: MyString
+
+two:
+  type: 
+  order: MyString
+  history: MyString
+  owner: MyString

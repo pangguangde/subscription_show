@@ -1,14 +1,13 @@
 <h1 style="color: white" ; align="center">Welcome!</h1>
-<body style="background: #8c8c8c">
+<body style="background: black">
 <!--<p style="color: white">Find me in app/views/welcome/index.html.erb</p>-->
 <div>
   <div>
     <% per = 43 %>
-    <div style="width: <%= 100 - per %>%; height: 100%; float: left;font-size: 100px;font-family: 'Aspergit-Light'">
+    <div style="width: <%= 100 - per %>%; height: 100%; float: left;font-size: 100px;font-family: 'Aspergit-Light'; opacity: 0.601252;">
       <b style="font-size: 100px;color: rgb(255,255,255);"><%= "#{@weather_now[:tmp]}℃" %></b>
       <b style="font-size: 40px;color: rgb(255,255,255);"><%= "#{@weather_now[:cond][:txt]}" %></b>
-      <!--
-    <% p "#{@weather_now[:tmp]}℃" %>-->
+
     </div>
     <div id="clock2" style="font-size: 50px; font-family: 'xx'; color: rgb(0, 0, 0); width: <%= per %>%; float: right; text-align: left">
       <span id="ch1" style="opacity: 0.101252;"></span>
@@ -16,31 +15,34 @@
     </div>
   </div>
 
-  <div>
+  <div style="font-family: 'CooperHewitt-ThinItalic'">
     <div>
       <% op = 1 %>
       <% @weather_hourly.each do |wh| %>
           <li style="list-style-type:none;">
-            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wh[:date][11, 12]} ->" %></b>
-            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wh[:tmp]}℃ #{wh[:pop]}%" %></b>
+            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+              <%= "#{wh[:date][11, 5]} -> #{wh[:tmp]}℃ #{wh[:pop]}%" %>
+            </b>
             <% op -= 0.12 %>
           </li>
       <% end %>
     </div>
-    <div style="width: 100%; height: 100px"></div>
+    <div style="width: 100%; height: 20px"></div>
     <% op = 1 %>
     <div>
       <% @weather_daily.each do |wd| %>
           <li style="list-style-type:none;">
 
-            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 30px"><%= "#{wd[:date]}\t[#{wd[:tmp][:min]}℃~#{wd[:tmp][:max]}℃]\t[#{wd[:cond][:txt_d]}->#{wd[:cond][:txt_n]}\t(#{wd[:pop]}%)]" %></b>
+            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+              <%= "#{wd[:date][5, 5]}\t[#{wd[:tmp][:min]}℃~#{wd[:tmp][:max]}℃]\t[#{wd[:cond][:txt_d]}->#{wd[:cond][:txt_n]}\t(#{wd[:pop]}%)]" %>
+            </b>
           </li>
           <% op -= 0.14 %>
       <% end %>
     </div>
   </div>
 </div>
-<div style="width: 100%; height: 800px"></div>
+<div style="width: 100%; height: 500px"></div>
 
 </body>
 
@@ -66,5 +68,5 @@
     {
         window.location.reload();
     }
-    setTimeout('myrefresh()',6000000); //指定1秒刷新一次
+    setTimeout('myrefresh()',6000000); //指定10分钟刷新一次
 </script>
