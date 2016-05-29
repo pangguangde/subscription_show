@@ -50,7 +50,7 @@
       </table>
     </div>
     <% op = 1 %>
-    <div style="float: right; width: 60%">
+    <div style="float: right; width: 60%" align="right">
       <table>
         <tr>
           <th colspan="4" style="text-align: center"><b style="color: sandybrown; font-size: 20px">七日天气</b></th>
@@ -98,7 +98,7 @@
 <div style=" width: 100%; padding-top: 500px" align="center">
   <table width="70%" rules="rows" style="line-height: 3">
     <% @his_json.each do |k, v| %>
-        <tr style="border-color: <%= "rgba(119, 85, 38,  #{op-0.1} )" %>; opacity: <%= op %>">
+        <tr style="border-color: <%= "rgba(210, 139, 41,  #{op-0.1} )" %>; opacity: <%= op %>">
           <td width="30%"><b style="color: rgb(255,255,255);"><%= k %></b></td>
           <td><b style="color: rgb(255,255,255);"><%= v %></b></td>
         </tr>
