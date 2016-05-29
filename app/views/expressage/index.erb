@@ -1,0 +1,29 @@
+<body class="intro-header">
+<div style="height: 100%">
+  <%=form_for :expressage, url: '/expressage', html: {novalidate:'', class:'form-signup', style:'height: 100%;  margin-bottom: 40%; font-size: 50px'} do |f| %>
+    <div style="width: 100%">
+      <%= f.text_field :code, placeholder: '请输入快递单号', style:'border: none;
+              border-radius: 5px;
+              height: 100px;
+              width: 60%;
+              background: rgba(0,0,0,0.2);
+              text-align: center;
+      '%>
+    </div>
+    <%= f.submit value: '提交', text:'提交', style: '
+    font: 500 38px/48px sans-serif;
+            background-color: rgba(158, 158, 158, 0.39);
+            margin-top: 40px;
+            border: none;
+            box-sizing: border-box;
+            height: 70px;
+            width: 180px;
+    ' %>
+
+    <div style="color: #ff0; margin-top: 10px;">
+      <strong class="form-signup-error">
+      </strong>
+    </div>
+  <% end %>
+</div>
+</body>

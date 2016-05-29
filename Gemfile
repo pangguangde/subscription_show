@@ -26,8 +26,11 @@ gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'pry-rails', :group => :development
-
+gem 'pry-rails'
+gem 'pry'
+gem 'pry-nav'
+gem 'pry-remote'
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

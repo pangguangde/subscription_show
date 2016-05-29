@@ -1,4 +1,3 @@
-<h1 style="color: white" ; align="center">Welcome!</h1>
 <body style="background: black">
 <!--<p style="color: white">Find me in app/views/welcome/index.html.erb</p>-->
 <div>
@@ -14,33 +13,98 @@
       <span id="ch2" style="opacity: 0.101252;"></span>
     </div>
   </div>
-
-  <div style="font-family: 'CooperHewitt-ThinItalic'">
-    <div>
+  <!--<p>空&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</p>-->
+  <div style="font-family: 'CooperHewitt-ThinItalic';">
+    <div style="float: left; width: 40%">
       <% op = 1 %>
-      <% @weather_hourly.each do |wh| %>
-          <li style="list-style-type:none;">
-            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
-              <%= "#{wh[:date][11, 5]} -> #{wh[:tmp]}℃ #{wh[:pop]}%" %>
-            </b>
+      <table>
+        <tr>
+          <th colspan="3" style="text-align: center"><b style="color: sandybrown; font-size: 20px;">今日天气</b></th>
+        </tr>
+        <!--<tr><th colspan="3" style="text-align: center"><b style="color: rgb(255,255,255); font-size: 20px">&nbsp</b></th></tr>-->
+        <tr>
+          <td width="80px"><b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">时间</b></td>
+          <td width="70px"><b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">温度</b></td>
+          <td><b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">降雨概率</b></td>
+        </tr>
+        <% @weather_hourly.each do |wh| %>
+            <tr>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wh[:date][11, 5]}" %>
+                </b>
+              </td>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wh[:tmp]}℃" %>
+                </b>
+              </td>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wh[:pop]}%" %>
+                </b>
+              </td>
+            </tr>
             <% op -= 0.12 %>
-          </li>
-      <% end %>
+        <% end %>
+      </table>
     </div>
-    <div style="width: 100%; height: 20px"></div>
     <% op = 1 %>
-    <div>
-      <% @weather_daily.each do |wd| %>
-          <li style="list-style-type:none;">
+    <div style="float: right; width: 60%">
+      <table>
+        <tr>
+          <th colspan="4" style="text-align: center"><b style="color: sandybrown; font-size: 20px">七日天气</b></th>
+        </tr>
+        <!--<tr><th colspan="4" style="text-align: center"><b style="color: rgb(255,255,255); font-size: 20px">&nbsp</b></th></tr>-->
+        <tr>
+          <td style="color: rgb(255,255,255); font-size: 20px; width: 80px">日期</td>
+          <td style="color: rgb(255,255,255); font-size: 20px; width: 120px">温度</td>
+          <td style="color: rgb(255,255,255); font-size: 20px; width: 150px">白天->晚间</td>
+          <td style="color: rgb(255,255,255); font-size: 20px">降雨概率</td>
+        </tr>
 
-            <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
-              <%= "#{wd[:date][5, 5]}\t[#{wd[:tmp][:min]}℃~#{wd[:tmp][:max]}℃]\t[#{wd[:cond][:txt_d]}->#{wd[:cond][:txt_n]}\t(#{wd[:pop]}%)]" %>
-            </b>
-          </li>
-          <% op -= 0.14 %>
-      <% end %>
+        <% @weather_daily.each do |wd| %>
+            <tr>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wd[:date][5, 5]}" %>
+                </b>
+              </td>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wd[:tmp][:min]}℃~#{wd[:tmp][:max]}℃" %>
+                </b>
+              </td>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wd[:cond][:txt_d]}->#{wd[:cond][:txt_n]}" %>
+                </b>
+              </td>
+              <td>
+                <b style="opacity: <%= op %>;color: rgb(255,255,255); font-size: 20px">
+                  <%= "#{wd[:pop]}%" %>
+                </b>
+              </td>
+            </tr>
+            <% op -= 0.14 %>
+        <% end %>
+      </table>
     </div>
   </div>
+
+</div>
+
+<% op = 1%>
+<div style=" width: 100%; padding-top: 500px" align="center">
+  <table width="70%" rules="rows" style="line-height: 3">
+    <% @his_json.each do |k, v| %>
+        <tr style="border-color: <%= "rgba(119, 85, 38,  #{op-0.1} )" %>; opacity: <%= op %>">
+          <td width="30%"><b style="color: rgb(255,255,255);"><%= k %></b></td>
+          <td><b style="color: rgb(255,255,255);"><%= v %></b></td>
+        </tr>
+        <% op -= 0.078 %>
+    <% end %>
+  </table>
 </div>
 <div style="width: 100%; height: 500px"></div>
 
@@ -64,9 +128,8 @@
 </script>
 
 <script language="JavaScript">
-    function myrefresh()
-    {
+    function myrefresh() {
         window.location.reload();
     }
-    setTimeout('myrefresh()',6000000); //指定10分钟刷新一次
+    setTimeout('myrefresh()', 6000000); //指定10分钟刷新一次
 </script>

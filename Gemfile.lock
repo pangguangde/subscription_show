@@ -1,5 +1,13 @@
+GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: c952306966c9bae4438e4d40351561af3d8005c0
+  specs:
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
+
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     actionmailer (4.2.3)
       actionpack (= 4.2.3)
@@ -99,8 +107,13 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
@@ -190,6 +203,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
@@ -198,7 +212,9 @@ DEPENDENCIES
   meta_request
   multi_json
   pry
+  pry-nav
   pry-rails
+  pry-remote
   rails (= 4.2.3)
   rest-client
   sass-rails (~> 5.0)
